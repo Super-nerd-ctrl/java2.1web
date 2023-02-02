@@ -25,6 +25,8 @@ public class ResponseServlet extends HttpServlet {
         user.setUsername("哈哈哈");
         user.setPassword("123456");
 
+        String email = (String)req.getAttribute("email");
+        user.setEmail(email);
         String s = JSON.toJSONString(user);
         PrintWriter writer = resp.getWriter();
         writer.println(s);

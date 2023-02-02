@@ -31,4 +31,13 @@
         <servlet-name>ResponseServlet</servlet-name>
         <url-pattern>/response</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RewordServlet</servlet-name>
+        <servlet-class>com.yt.javaweb.RewordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RewordServlet</servlet-name>
+        <url-pattern>/reword</url-pattern>
+    </servlet-mapping>
 </web-app>

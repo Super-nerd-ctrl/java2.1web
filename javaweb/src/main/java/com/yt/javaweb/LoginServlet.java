@@ -29,5 +29,35 @@ public class LoginServlet extends HttpServlet {
         System.out.println(userName);
         String password = req.getParameter("password");
         System.out.println(password);
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
+        String htmls = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <title>Title</title>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<h1>登陆成功</h1>\n" +
+                "</body>\n" +
+                "</html>";
+        String html2 = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <title>Title</title>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<h1>登录失败</h1>\n" +
+                "</body>\n" +
+                "</html>";
+        PrintWriter writer = resp.getWriter();
+        if ("admin".equals(userName) && "123456".equals(password)){
+            writer.println(htmls);
+        }else {
+            writer.println(html2);
+        }
+        writer.flush();
+        writer.close();
     }
 }

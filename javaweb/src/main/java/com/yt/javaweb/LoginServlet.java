@@ -12,13 +12,7 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("这是一个get请求");
-        ServletConfig config = getServletConfig();
-        String userName = config.getInitParameter("userName");
-        System.out.println(userName);
-        ServletContext servletContext = config.getServletContext();
-        String password = servletContext.getInitParameter("password");
-        System.out.println(password);
+        req.getRequestDispatcher("/login.html").forward(req, resp);
     }
 
     @Override
@@ -49,6 +43,7 @@ public class LoginServlet extends HttpServlet {
                 "</head>\n" +
                 "<body>\n" +
                 "<h1>登录失败</h1>\n" +
+                "    <a href=\"http://localhost:8080/login\">返回登录页面</a>\n" +
                 "</body>\n" +
                 "</html>";
         PrintWriter writer = resp.getWriter();

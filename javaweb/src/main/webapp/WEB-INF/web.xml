@@ -40,4 +40,13 @@
         <servlet-name>RewordServlet</servlet-name>
         <url-pattern>/reword</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RedirectServlet</servlet-name>
+        <servlet-class>com.yt.javaweb.RedirectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RedirectServlet</servlet-name>
+        <url-pattern>/redirect</url-pattern>
+    </servlet-mapping>
 </web-app>

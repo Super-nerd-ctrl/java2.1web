@@ -1,4 +1,4 @@
-package com.yt.javaweb;
+package com.yt.javaweb.controller;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

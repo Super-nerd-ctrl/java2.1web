@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="../lib/jquery-3.6.3.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -22,7 +23,7 @@
 
         .container {
             height: 100%;
-            background-image: url(R-C.jpg);
+            background-image: url(../R-C.jpg);
             background-size: cover;
         }
 
@@ -74,6 +75,26 @@
             text-align: center;
             line-height: 88px;
         }
+
+        .right,
+        .error {
+            position: absolute;
+            left: 135px;
+            top: 155px;
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 40px;
+            display: none;
+        }
+
+        .right {
+            background-color: #67C23A;
+        }
+        .error {
+            background-color: #F56C6C;
+        }
     </style>
 </head>
 
@@ -82,11 +103,17 @@
         <div class="login-wrapper">
             <div class="header">Login</div>
             <div class="form-wrapper">
-                <form action="/login" method="post">
-                    <input class="input-item" type="text" name="userName" placeholder="用户名">
-                    <input class="input-item" type="password" name="password" placeholder="密码">
-                    <button type="submit" class="btn">Login</button>
+                <form>
+                    <input id="userName" class="input-item" type="text" name="userName" placeholder="用户名">
+                    <input id="password" class="input-item" type="password" name="password" placeholder="密码">
+                    <button type="button" class="btn" onclick="toAjax()">Login</button>
                 </form>
+            </div>
+            <div class="right">
+                登录成功！
+            </div>
+            <div class="error">
+                用户名或密码错误！
             </div>
             <div class="msg">
                 员工后台登录
@@ -94,5 +121,26 @@
         </div>
     </div>
 </body>
+<script>
+    function toAjax(){
+        $.ajax({
+            type: "POST",        // 请求方式
+            url: "Http://localhost:8080/login", // 请求路径
+            dataType: "json",   // 预期返回一个 json 类型数据
+            data: {
+                "userName" : $("#userName").val(),
+                "password" : $("#password").val()
+            },
+            success: function (data) {   // data是形参名，代表返回的数据
+                if (data.status == "9999"){
+                    $(".error").show().delay(2000).fadeOut();
+                }
+                if (data.status == "0000") {
+                    $(".right").show().delay(2000).fadeOut();
+                }
+            }
+        });
 
+    }
+</script>
 </html>

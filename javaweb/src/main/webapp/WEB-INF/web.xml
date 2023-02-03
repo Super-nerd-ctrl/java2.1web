@@ -11,7 +11,7 @@
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.yt.javaweb.LoginServlet</servlet-class>
+        <servlet-class>com.yt.javaweb.controller.LoginServlet</servlet-class>
         <init-param>
             <param-name>userName</param-name>
             <param-value>admin</param-value>
@@ -25,7 +25,7 @@
 
     <servlet>
         <servlet-name>ResponseServlet</servlet-name>
-        <servlet-class>com.yt.javaweb.ResponseServlet</servlet-class>
+        <servlet-class>com.yt.javaweb.controller.ResponseServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResponseServlet</servlet-name>
@@ -34,7 +34,7 @@
     
     <servlet>
         <servlet-name>RewordServlet</servlet-name>
-        <servlet-class>com.yt.javaweb.RewordServlet</servlet-class>
+        <servlet-class>com.yt.javaweb.controller.RewordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RewordServlet</servlet-name>
@@ -43,7 +43,7 @@
     
     <servlet>
         <servlet-name>RedirectServlet</servlet-name>
-        <servlet-class>com.yt.javaweb.RedirectServlet</servlet-class>
+        <servlet-class>com.yt.javaweb.controller.RedirectServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RedirectServlet</servlet-name>

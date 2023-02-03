@@ -1,6 +1,7 @@
-package com.yt.javaweb;
+package com.yt.javaweb.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.yt.javaweb.domin.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

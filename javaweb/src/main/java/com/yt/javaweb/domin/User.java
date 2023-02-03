@@ -1,4 +1,4 @@
-package com.yt.javaweb;
+package com.yt.javaweb.domin;
 
 import lombok.Data;
 

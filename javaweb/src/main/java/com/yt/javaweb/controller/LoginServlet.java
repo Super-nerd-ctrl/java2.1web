@@ -1,6 +1,7 @@
 package com.yt.javaweb.controller;
 
 import com.alibaba.fastjson.JSON;
+import javafx.application.Application;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -31,12 +32,23 @@ public class LoginServlet extends HttpServlet {
         resp.setContentType("text/json;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
         Map<String, Object> data= new HashMap<String, Object>();
-        if ("admin".equals(userName) && "123456".equals(password)){
-            data.put("status", "0000");
-            data.put("msg", "登录成功");
-        }else {
-            data.put("status", "9999");
-            data.put("msg", "登录失败");
+
+        String reqCodeText = req.getParameter("reqCodeText");
+        Object reqCode = req.getSession().getAttribute("reqCode");
+        if (reqCode == null) {
+            data.put("code","9998");
+            data.put("msg","验证码过期从新填写");
+        } else {
+            String reqCodeStr = (String)reqCode;
+
+            if (reqCodeStr.equalsIgnoreCase(reqCodeText) && "admin".equals(userName) && "123456".equals(password)) {
+                data.put("code","0000");
+                data.put("msg","登录成功！");
+                req.getSession().setAttribute("userName", userName);
+            }else {
+                data.put("code", "9999");
+                data.put("msg", "登录失败");
+                }
         }
         String s = JSON.toJSONString(data);
         writer.println(s);

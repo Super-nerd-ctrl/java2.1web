@@ -106,6 +106,8 @@
                 <form>
                     <input id="userName" class="input-item" type="text" name="userName" placeholder="用户名">
                     <input id="password" class="input-item" type="password" name="password" placeholder="密码">
+                    <input id="reqCodeText" class="input-item" type="text" name="reqCodeText" placeholder="验证码">
+                    <img id="reqCode" src="" onclick="initReqCode()">
                     <button type="button" class="btn" onclick="toAjax()">Login</button>
                 </form>
             </div>
@@ -129,18 +131,37 @@
             dataType: "json",   // 预期返回一个 json 类型数据
             data: {
                 "userName" : $("#userName").val(),
-                "password" : $("#password").val()
+                "password" : $("#password").val(),
+                "reqCodeText" : $('#reqCodeText').val()
             },
             success: function (data) {   // data是形参名，代表返回的数据
-                if (data.status == "9999"){
+                if (data.code == "9999"){
                     $(".error").show().delay(2000).fadeOut();
                 }
-                if (data.status == "0000") {
+                if (data.code == "0000") {
+                    location.href = "views/index.jsp"
                     $(".right").show().delay(2000).fadeOut();
                 }
             }
         });
+    }
+    $(function(){
 
+        initReqCode();
+    });
+
+    function initReqCode(){
+        $.ajax({
+            url:"Http://localhost:8080/reCode",
+            type:"GET",
+            async:false,
+            success:function(data){
+                $("#reqCode").attr("src",data);
+            },
+            error:function(){
+                alert("请求错误");
+            }
+        });
     }
 </script>
 </html>

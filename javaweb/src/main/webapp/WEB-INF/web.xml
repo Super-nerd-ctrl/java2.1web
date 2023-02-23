@@ -49,4 +49,23 @@
         <servlet-name>RedirectServlet</servlet-name>
         <url-pattern>/redirect</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SessionServlet</servlet-name>
+        <servlet-class>com.yt.javaweb.controller.SessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionServlet</servlet-name>
+        <url-pattern>/session</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EasyCapthchaServlet</servlet-name>
+        <servlet-class>com.yt.javaweb.controller.EasyCapthchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EasyCapthchaServlet</servlet-name>
+        <url-pattern>/reCode</url-pattern>
+    </servlet-mapping>
+
 </web-app>
